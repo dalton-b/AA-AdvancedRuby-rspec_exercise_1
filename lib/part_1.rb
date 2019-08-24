@@ -1,9 +1,9 @@
 def average(arg1, arg2)
-    (arg1.to_f + arg2.to_f) / 2
+    (arg1 + arg2) / 2.0
 end
 
 def average_array(arr)
-    arr.inject{ |sum, el| sum + el }.to_f / arr.size
+    arr.sum / (arr.length * 1.0)
 end
 
 def repeat(string_arg, num_arg)
@@ -15,15 +15,13 @@ def yell(string_arg)
 end
 
 def alternating_case(string_arg)
-    count = 1
-    return_string = string_arg.downcase.split.map! { |word|
-        if count % 2 == 1
-           new_word = word.upcase
+    words = string_arg.split(" ")
+    new_words = words.map.with_index do |word, i|
+        if i % 2 == 0
+            word.upcase
         else
-            new_word = word
+            word.downcase
         end
-        count += 1
-        new_word
-    }
-    return return_string.join(' ')
+    end
+    new_words.join(" ")
 end
